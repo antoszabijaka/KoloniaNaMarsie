@@ -8,15 +8,15 @@ import java.util.Random;
 
 public abstract class Jednostka {
 
-    public Pole staraLokalizacja;
+    public Pole Lokalizacja;
     public Pole nowaLokalizacja;
     private Random generator = new Random();
     private int poziomZdrowia;
     private int poziomWytrzymalosci;
     private int poziomGlodu;
-    public Jednostka(Mapa mapa, int poziomZdrowia, int poziomWytrzymalosci, int poziomGlodu)
+    public Jednostka(Mapa mapa, int poziomZdrowia, int poziomWytrzymalosci, int poziomGlodu, Pole Lokalizacja)
     {
-        //Symulacja.mapa=mapa;
+        this.Lokalizacja=Lokalizacja;
         this.poziomZdrowia=poziomZdrowia;
         this.poziomWytrzymalosci=poziomWytrzymalosci;
         this.poziomGlodu=poziomGlodu;
