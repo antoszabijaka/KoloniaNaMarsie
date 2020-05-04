@@ -26,7 +26,7 @@ public class Symulacja {
         listaJednostek.add(dziecko);
         listaJednostek.add(owca);
         listaJednostek.add(swinia);
-        while (listaJednostek.size()<=1)
+        while (listaJednostek.size()>=1)
         {
             for (Jednostka jednostka :listaJednostek) {
                jednostka.pobierzNowaLokalizacje(mapa.tablicaPol,10,10);
