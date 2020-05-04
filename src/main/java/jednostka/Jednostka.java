@@ -52,7 +52,4 @@ public abstract class Jednostka {
         return tablicaPol[i][j];
     }
 
-
-
-
 }
