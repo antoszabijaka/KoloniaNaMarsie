@@ -6,7 +6,7 @@ import symulacja.Symulacja;
 
 import java.util.Random;
 
-public abstract class Jednostka {
+public abstract class Jednostka implements IJednostka {
 
     public Pole Lokalizacja;
     public Pole nowaLokalizacja;
@@ -25,10 +25,7 @@ public abstract class Jednostka {
     {
         return poziomZdrowia+10;
     }
-    public int zmniejszZdrowie()
-    {
-        return poziomZdrowia-10;
-    }
+    public int zmniejszZdrowie() { return poziomZdrowia-10; }
     public int zwiekszWytrzymalosc()
     {
         return poziomWytrzymalosci+10;
