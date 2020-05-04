@@ -11,11 +11,6 @@ import pole.Pole;
 import java.util.Map;
 
 public class Symulacja {
-    //Dorosly mezczyzna = new Dorosly(mapa,100,100,0,"Zbigniew");
-    //Dorosly kobieta = new Dorosly(mapa,100,100,0,"Katarzyna");
-    //Dziecko dziecko = new Dziecko(mapa,100,100,0,"Ludwik");
-    //Zwierze owca = new Zwierze(mapa,100,100,0,"Beczka");
-    //Zwierze swinia = new Zwierze(mapa,100,100,0,"Chrumkas");
     public static void main(String[] args)
     {
         Mapa mapa = new Mapa();
