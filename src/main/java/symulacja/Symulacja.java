@@ -5,6 +5,7 @@ import jednostka.Dorosly;
 import jednostka.Dziecko;
 import jednostka.Jednostka;
 import jednostka.Zwierze;
+import pole.Pole;
 import pole.Skaly;
 
 import java.util.LinkedList;
@@ -36,6 +37,7 @@ public class Symulacja {
     {   while(listaJednostek.size()>=1)
         for (Jednostka jednostka:listaJednostek) {
             jednostka.nowaLokalizacja=jednostka.pobierzNowaLokalizacje(mapa.tablicaPol,mapa.dlugosc,mapa.szerokosc);
+            
         }
     }
     public Symulacja(Mapa mapa)

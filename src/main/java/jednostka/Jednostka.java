@@ -8,6 +8,7 @@ import java.util.Random;
 
 public abstract class Jednostka implements IJednostka {
 
+    private int[]tablica2=new int[4];
     public Pole Lokalizacja;
     public Pole nowaLokalizacja;
     private Random generator = new Random();
@@ -45,6 +46,7 @@ public abstract class Jednostka implements IJednostka {
     public Pole pobierzNowaLokalizacje(Pole[][]tablicaPol,int dlugosc, int szerokosc)
     {
         int i=generator.nextInt(szerokosc);
+        tablica2[0]=i;
         int j=generator.nextInt(dlugosc);
         return tablicaPol[i][j];
     }
