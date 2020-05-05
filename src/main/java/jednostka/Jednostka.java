@@ -4,11 +4,12 @@ import Mapa.Mapa;
 import pole.Pole;
 import symulacja.Symulacja;
 
+import java.util.List;
 import java.util.Random;
 
 public abstract class Jednostka implements IJednostka {
 
-    private int[]tablica2=new int[4];
+    public int[]tablica;
     public Pole Lokalizacja;
     public Pole nowaLokalizacja;
     private Random generator = new Random();
@@ -43,11 +44,18 @@ public abstract class Jednostka implements IJednostka {
     {
         return poziomGlodu-10;
     }
+    public double obliczOdlegloscPoczatkowa(Jednostka jednostka)
+    {
+        double odlegloscPoczatkowa;
+        odlegloscPoczatkowa = Math.sqrt(Math.pow(jednostka.tablica[0],2)+Math.pow(jednostka.tablica[1],2));
+        return odlegloscPoczatkowa;
+    }
     public Pole pobierzNowaLokalizacje(Pole[][]tablicaPol,int dlugosc, int szerokosc)
     {
         int i=generator.nextInt(szerokosc);
-        tablica2[0]=i;
+        tablica[0]=i;
         int j=generator.nextInt(dlugosc);
+        tablica[1]=j;
         return tablicaPol[i][j];
     }
 

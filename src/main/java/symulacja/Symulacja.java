@@ -34,12 +34,19 @@ public class Symulacja {
         tura();
     }
     public void tura()
-    {   while(listaJednostek.size()>=1)
+    {
+        double odlegloscPoczatkowa;
+        int licznikTur=0;
+        while(listaJednostek.size()>=1)
         for (Jednostka jednostka:listaJednostek) {
             jednostka.nowaLokalizacja=jednostka.pobierzNowaLokalizacje(mapa.tablicaPol,mapa.dlugosc,mapa.szerokosc);
-            
+            if(licznikTur==0){
+                odlegloscPoczatkowa = jednostka.obliczOdlegloscPoczatkowa(jednostka);
+            }
+            licznikTur++;
         }
     }
+
     public Symulacja(Mapa mapa)
     {
         this.mapa=mapa;
