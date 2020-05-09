@@ -31,23 +31,41 @@ public class Symulacja {
     public void tura()
     {
         double odleglosc;
-        int licznikTur=0;
+        int licznikTur=1;
         //while(listaJednostek.size()>=1)
+        while (licznikTur<5){
+            System.out.println("Tura "+licznikTur+":");
         for (Jednostka jednostka:listaJednostek) {
-            if(licznikTur==0) {
-                jednostka.tablica[0]=0;
-                jednostka.tablica[1]=0;
+            if (licznikTur == 1) {
+                jednostka.tablica[0] = 0;
+                jednostka.tablica[1] = 0;
+                System.out.println(jednostka.imie + ":");
+                System.out.println("Obecna lokalizacja: Pole[" + jednostka.tablica[0] + "][" + jednostka.tablica[1] + "]");
                 do {
                     jednostka.Lokalizacja = jednostka.pobierzNowaLokalizacje(mapa.tablicaPol, mapa.dlugosc, mapa.szerokosc);
+                    System.out.println("Nowa lokalizacja: Pole[" + jednostka.tablica[2] + "][" + jednostka.tablica[3] + "]");
                     odleglosc = jednostka.obliczOdleglosc(jednostka);
-                    System.out.println("Odleglosc "+jednostka.imie+": ");
-                    System.out.format("%.2f%n",odleglosc);
-                    if(jednostka.czyDobraOdlegosc(odleglosc)==false)
+                    System.out.println("Odleglosc: " + odleglosc);
+                    if (!jednostka.czyDobraOdlegosc(odleglosc))
+                        System.out.println("Za daleko. Pobieranie nowej lokalizacji...");
+                } while (!jednostka.czyDobraOdlegosc(odleglosc));
+            } else {
+                jednostka.tablica[0] = jednostka.tablica[2];
+                jednostka.tablica[1] = jednostka.tablica[3];
+                System.out.println(jednostka.imie + ":");
+                System.out.println("Obecna lokalizacja: Pole[" + jednostka.tablica[0] + "][" + jednostka.tablica[1] + "]");
+                do {
+                    jednostka.Lokalizacja = jednostka.pobierzNowaLokalizacje(mapa.tablicaPol, mapa.dlugosc, mapa.szerokosc);
+                    System.out.println("Nowa lokalizacja: Pole[" + jednostka.tablica[2] + "][" + jednostka.tablica[3] + "]");
+                    odleglosc = jednostka.obliczOdleglosc(jednostka);
+                    System.out.println("Odleglosc: " + odleglosc);
+                    if (!jednostka.czyDobraOdlegosc(odleglosc))
                         System.out.println("Za daleko. Pobieranie nowej lokalizacji...");
                 } while (!jednostka.czyDobraOdlegosc(odleglosc));
             }
         }
         licznikTur++;
+        }
     }
 
     private Symulacja(Mapa mapa)
