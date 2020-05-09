@@ -8,7 +8,7 @@ public interface IJednostka {
     int zmniejszGlod();
     int zwiekszGlod();
     int zwiekszWytrzymalosc();
-    int zmniejszWytrzymalosc();
+    int zmniejszWytrzymalosc(double a);
     int zwiekszZdrowie();
     int zmniejszZdrowie();
 }

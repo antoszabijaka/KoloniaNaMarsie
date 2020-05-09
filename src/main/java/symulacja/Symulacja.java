@@ -30,14 +30,13 @@ public class Symulacja {
         listaJednostek.add(dziecko);
         listaJednostek.add(owca);
         listaJednostek.add(swinia);
+        tura(listaJednostek);
     }
     public void tura(List<Jednostka>listaJednostek)
     {
         double odleglosc;
         int licznikTur=1;
-        //int licznikJednostek=0;
         while (listaJednostek.size()>=1){
-        //while (licznikTur<5){
             System.out.println("Tura "+licznikTur+":");
         for (int i=0;i<listaJednostek.size();i++)
         {
@@ -114,7 +113,6 @@ public class Symulacja {
         Symulacja symulacja = new Symulacja(mapa);
         mapa.losujkofiguracje(mapa.tablica);
         mapa.rozmiescpola(mapa.tablicaPol);
-        symulacja.startSymulacji(symulacja.listaJednostek);//symulacja.listaJednostek);
-        symulacja.tura(symulacja.listaJednostek);
+        symulacja.startSymulacji(symulacja.listaJednostek);
     }
 }
