@@ -5,6 +5,11 @@ import jednostka.Dorosly;
 import jednostka.Dziecko;
 import jednostka.Jednostka;
 import jednostka.Zwierze;
+import pole.Pozywienie;
+import pole.Schronienie;
+import pole.Skaly;
+import pole.Woda;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -35,7 +40,8 @@ public class Symulacja {
         //while(listaJednostek.size()>=1)
         while (licznikTur<5){
             System.out.println("Tura "+licznikTur+":");
-        for (Jednostka jednostka:listaJednostek) {
+        for (Jednostka jednostka:listaJednostek)
+        {
                 jednostka.tablica[0] = jednostka.tablica[2];
                 jednostka.tablica[1] = jednostka.tablica[3];
                 System.out.println(jednostka.imie + ":");
@@ -48,7 +54,26 @@ public class Symulacja {
                     if (!jednostka.czyDobraOdlegosc(odleglosc))
                         System.out.println("Za daleko. Pobieranie nowej lokalizacji...");
                 } while (!jednostka.czyDobraOdlegosc(odleglosc));
-            }
+                if(jednostka.Lokalizacja.getClass()==Pozywienie.class)
+                {
+                    jednostka.poziomGlodu=jednostka.zmniejszGlod();
+                }
+                else if(jednostka.Lokalizacja.getClass()==Schronienie.class)
+                {
+                    jednostka.poziomWytrzymalosci=jednostka.zwiekszWytrzymalosc();
+                }
+                else if(jednostka.Lokalizacja.getClass()==Skaly.class)
+                {
+                    jednostka.poziomZdrowia=jednostka.zmniejszZdrowie();
+                }
+                else if(jednostka.Lokalizacja.getClass()==Woda.class)
+                {
+                    jednostka.poziomZdrowia=jednostka.zwiekszZdrowie();
+                }
+                System.out.println("Poziom wytrzymalosci:"+jednostka.poziomWytrzymalosci);
+                System.out.println("Poziom zdrowia:"+jednostka.poziomZdrowia);
+                System.out.println("Poziom glodu:"+jednostka.poziomGlodu);
+                }
         licznikTur++;
         }
     }

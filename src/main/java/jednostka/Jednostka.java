@@ -10,9 +10,9 @@ public abstract class Jednostka implements IJednostka {
     public Pole Lokalizacja;
     private Random generator = new Random();
     public String imie;
-    private int poziomZdrowia;
-    private int poziomWytrzymalosci;
-    private int poziomGlodu;
+    public int poziomZdrowia;
+    public int poziomWytrzymalosci;
+    public int poziomGlodu;
     public Jednostka(int poziomZdrowia, int poziomWytrzymalosci, int poziomGlodu, Pole Lokalizacja, String imie)
     {
         this.imie=imie;
