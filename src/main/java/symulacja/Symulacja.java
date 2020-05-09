@@ -9,8 +9,6 @@ import pole.Pozywienie;
 import pole.Schronienie;
 import pole.Skaly;
 import pole.Woda;
-
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,7 +16,7 @@ import java.util.List;
 
 public class Symulacja {
     private Mapa mapa;
-    private List<Jednostka>listaJednostek=new ArrayList<>();
+    private List<Jednostka>listaJednostek=new LinkedList<>();
 
     private void startSymulacji(List<Jednostka>listaJednostek)
     {
@@ -47,24 +45,24 @@ public class Symulacja {
                 listaJednostek.get(i).tablica[1] = listaJednostek.get(i).tablica[3];
                 System.out.println(listaJednostek.get(i).imie + ":");
                 System.out.println("Obecna lokalizacja: Pole[" + listaJednostek.get(i).tablica[0] + "][" + listaJednostek.get(i).tablica[1] + "]");
-                if(listaJednostek.get(i).Lokalizacja.getClass()==Pozywienie.class)
+                if(listaJednostek.get(i).lokalizacja.getClass()==Pozywienie.class)
                     System.out.println("Rodzaj pola: Pozywienie");
-                if(listaJednostek.get(i).Lokalizacja.getClass()==Schronienie.class)
+                if(listaJednostek.get(i).lokalizacja.getClass()==Schronienie.class)
                     System.out.println("Rodzaj pola: Schronienie");
-                if(listaJednostek.get(i).Lokalizacja.getClass()==Skaly.class)
+                if(listaJednostek.get(i).lokalizacja.getClass()==Skaly.class)
                     System.out.println("Rodzaj pola: Skaly");
-                if(listaJednostek.get(i).Lokalizacja.getClass()==Woda.class)
+                if(listaJednostek.get(i).lokalizacja.getClass()==Woda.class)
                     System.out.println("Rodzaj pola: Woda");
                 do {
-                    listaJednostek.get(i).Lokalizacja = listaJednostek.get(i).pobierzNowaLokalizacje(mapa.tablicaPol, mapa.dlugosc, mapa.szerokosc);
+                    listaJednostek.get(i).lokalizacja = listaJednostek.get(i).pobierzNowaLokalizacje(mapa.tablicaPol, mapa.dlugosc, mapa.szerokosc);
                     System.out.println("Nowa lokalizacja: Pole[" + listaJednostek.get(i).tablica[2] + "][" + listaJednostek.get(i).tablica[3] + "]");
-                    if(listaJednostek.get(i).Lokalizacja.getClass()==Pozywienie.class)
+                    if(listaJednostek.get(i).lokalizacja.getClass()==Pozywienie.class)
                         System.out.println("Rodzaj pola: Pozywienie");
-                    if(listaJednostek.get(i).Lokalizacja.getClass()==Schronienie.class)
+                    else if(listaJednostek.get(i).lokalizacja.getClass()==Schronienie.class)
                         System.out.println("Rodzaj pola: Schronienie");
-                    if(listaJednostek.get(i).Lokalizacja.getClass()==Skaly.class)
+                    else if(listaJednostek.get(i).lokalizacja.getClass()==Skaly.class)
                         System.out.println("Rodzaj pola: Skaly");
-                    if(listaJednostek.get(i).Lokalizacja.getClass()==Woda.class)
+                    else if(listaJednostek.get(i).lokalizacja.getClass()==Woda.class)
                         System.out.println("Rodzaj pola: Woda");
                     odleglosc = listaJednostek.get(i).obliczOdleglosc(listaJednostek.get(i));
                     System.out.println("Odleglosc: " + odleglosc);
@@ -72,24 +70,24 @@ public class Symulacja {
                         System.out.println("Za daleko. Pobieranie nowej lokalizacji...");
                 } while (!listaJednostek.get(i).czyDobraOdlegosc(odleglosc));
                 listaJednostek.get(i).poziomWytrzymalosci=listaJednostek.get(i).zmniejszWytrzymalosc(odleglosc);
-                if(listaJednostek.get(i).Lokalizacja.getClass()==Pozywienie.class)
+                if(listaJednostek.get(i).lokalizacja.getClass()==Pozywienie.class)
                 {
                     if(listaJednostek.get(i).poziomGlodu>=10)
                     listaJednostek.get(i).poziomGlodu=listaJednostek.get(i).zmniejszGlod();
                 }
-                else if(listaJednostek.get(i).Lokalizacja.getClass()==Schronienie.class)
+                else if(listaJednostek.get(i).lokalizacja.getClass()==Schronienie.class)
                 {
                     if(listaJednostek.get(i).poziomWytrzymalosci<=90)
                     listaJednostek.get(i).poziomWytrzymalosci=listaJednostek.get(i).zwiekszWytrzymalosc();
                 }
-                else if(listaJednostek.get(i).Lokalizacja.getClass()==Skaly.class)
+                else if(listaJednostek.get(i).lokalizacja.getClass()==Skaly.class)
                 {
                     if(listaJednostek.get(i).poziomZdrowia>=20)
                     listaJednostek.get(i).poziomZdrowia=listaJednostek.get(i).zmniejszZdrowie();
                     if(listaJednostek.get(i).poziomGlodu<=80)
                     listaJednostek.get(i).poziomGlodu=listaJednostek.get(i).zwiekszGlod();
                 }
-                else if(listaJednostek.get(i).Lokalizacja.getClass()==Woda.class)
+                else if(listaJednostek.get(i).lokalizacja.getClass()==Woda.class)
                 {
                     if(listaJednostek.get(i).poziomZdrowia<=90)
                     listaJednostek.get(i).poziomZdrowia=listaJednostek.get(i).zwiekszZdrowie();

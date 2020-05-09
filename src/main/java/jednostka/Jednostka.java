@@ -7,16 +7,16 @@ import java.util.Random;
 public abstract class Jednostka implements IJednostka {
 
     public int[]tablica = {0,0,0,0};
-    public Pole Lokalizacja;
+    public Pole lokalizacja;
     private Random generator = new Random();
     public String imie;
     public int poziomZdrowia;
     public int poziomWytrzymalosci;
     public int poziomGlodu;
-    public Jednostka(int poziomZdrowia, int poziomWytrzymalosci, int poziomGlodu, Pole Lokalizacja, String imie)
+    public Jednostka(int poziomZdrowia, int poziomWytrzymalosci, int poziomGlodu, Pole lokalizacja, String imie)
     {
         this.imie=imie;
-        this.Lokalizacja=Lokalizacja;
+        this.lokalizacja=lokalizacja;
         this.poziomZdrowia=poziomZdrowia;
         this.poziomWytrzymalosci=poziomWytrzymalosci;
         this.poziomGlodu=poziomGlodu;
