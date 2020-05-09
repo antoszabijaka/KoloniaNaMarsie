@@ -6,7 +6,7 @@ import java.util.Random;
 
 public abstract class Jednostka implements IJednostka {
 
-    public int[]tablica = new int[4];
+    public int[]tablica = {0,0,0,0};
     public Pole Lokalizacja;
     private Random generator = new Random();
     public String imie;
@@ -50,9 +50,9 @@ public abstract class Jednostka implements IJednostka {
     }
     public boolean czyDobraOdlegosc(double odleglosc)
     {
-        if(odleglosc<=11)
+        if(odleglosc<=10)
             return true;
-        else if(odleglosc>11)
+        else if(odleglosc>10)
             return false;
         else return false;
     }

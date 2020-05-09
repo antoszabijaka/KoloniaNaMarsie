@@ -36,20 +36,6 @@ public class Symulacja {
         while (licznikTur<5){
             System.out.println("Tura "+licznikTur+":");
         for (Jednostka jednostka:listaJednostek) {
-            if (licznikTur == 1) {
-                jednostka.tablica[0] = 0;
-                jednostka.tablica[1] = 0;
-                System.out.println(jednostka.imie + ":");
-                System.out.println("Obecna lokalizacja: Pole[" + jednostka.tablica[0] + "][" + jednostka.tablica[1] + "]");
-                do {
-                    jednostka.Lokalizacja = jednostka.pobierzNowaLokalizacje(mapa.tablicaPol, mapa.dlugosc, mapa.szerokosc);
-                    System.out.println("Nowa lokalizacja: Pole[" + jednostka.tablica[2] + "][" + jednostka.tablica[3] + "]");
-                    odleglosc = jednostka.obliczOdleglosc(jednostka);
-                    System.out.println("Odleglosc: " + odleglosc);
-                    if (!jednostka.czyDobraOdlegosc(odleglosc))
-                        System.out.println("Za daleko. Pobieranie nowej lokalizacji...");
-                } while (!jednostka.czyDobraOdlegosc(odleglosc));
-            } else {
                 jednostka.tablica[0] = jednostka.tablica[2];
                 jednostka.tablica[1] = jednostka.tablica[3];
                 System.out.println(jednostka.imie + ":");
@@ -63,7 +49,6 @@ public class Symulacja {
                         System.out.println("Za daleko. Pobieranie nowej lokalizacji...");
                 } while (!jednostka.czyDobraOdlegosc(odleglosc));
             }
-        }
         licznikTur++;
         }
     }
