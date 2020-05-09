@@ -24,3 +24,12 @@ moglo byc w mainie
         { for(int j=0;j<mapa.szerokosc;j++)
                 System.out.println("tablica["+i+"]["+j+"]="+mapa.tablica[i][j]);}
     }
+    jednostka.nowaLokalizacja=jednostka.pobierzNowaLokalizacje(mapa.tablicaPol,mapa.dlugosc,mapa.szerokosc);
+                if(licznikTur==0)   //tylko w pierwszej turze jednostki maja zadana lokalizacje - tablicaPol[0][0]
+                {
+                    odlegloscPoczatkowa=jednostka.obliczOdlegloscPoczatkowa(jednostka);
+                    if(jednostka.czyDobraOdlegosc(odlegloscPoczatkowa)==false)
+                        while (jednostka.czyDobraOdlegosc(odlegloscPoczatkowa)==false)
+                        {
+                            jednostka.nowaLokalizacja=jednostka.pobierzNowaLokalizacje(mapa.tablicaPol,mapa.dlugosc,mapa.szerokosc);
+                            odlegloscPoczatkowa=jednostka.obliczOdlegloscPoczatkowa(jednostka);

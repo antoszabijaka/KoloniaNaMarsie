@@ -5,9 +5,6 @@ import jednostka.Dorosly;
 import jednostka.Dziecko;
 import jednostka.Jednostka;
 import jednostka.Zwierze;
-import pole.Pole;
-import pole.Skaly;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,15 +14,13 @@ public class Symulacja {
     private Mapa mapa;
     private List<Jednostka>listaJednostek=new LinkedList<>();
 
-    public void startSymulacji(List<Jednostka>listaJednostek)
+    private void startSymulacji(List<Jednostka>listaJednostek)
     {
-        mapa.losujkofiguracje(mapa.tablica);
-        mapa.rozmiescpola(mapa.tablicaPol);
-        Dorosly mezczyzna = new Dorosly(mapa,100,100,0, mapa.tablicaPol[0][0],"Zbigniew");
-        Dorosly kobieta = new Dorosly(mapa,100,100,0, mapa.tablicaPol[0][0],"Katarzyna");
-        Dziecko dziecko = new Dziecko(mapa,100,100,0, mapa.tablicaPol[0][0],"Ludwik");
-        Zwierze owca = new Zwierze(mapa,100,100,0 , mapa.tablicaPol[0][0],"Beczka");
-        Zwierze swinia = new Zwierze(mapa,100,100,0, mapa.tablicaPol[0][0],"Chrumkas");
+        Dorosly mezczyzna = new Dorosly(100,100,0, mapa.tablicaPol[0][0],"Zbigniew");
+        Dorosly kobieta = new Dorosly(100,100,0, mapa.tablicaPol[0][0],"Katarzyna");
+        Dziecko dziecko = new Dziecko(100,100,0, mapa.tablicaPol[0][0],"Ludwik");
+        Zwierze owca = new Zwierze(100,100,0 , mapa.tablicaPol[0][0],"Beczka");
+        Zwierze swinia = new Zwierze(100,100,0, mapa.tablicaPol[0][0],"Chrumkas");
         listaJednostek.add(mezczyzna);
         listaJednostek.add(kobieta);
         listaJednostek.add(dziecko);
@@ -35,19 +30,27 @@ public class Symulacja {
     }
     public void tura()
     {
-        double odlegloscPoczatkowa;
+        double odleglosc;
         int licznikTur=0;
-        while(listaJednostek.size()>=1)
+        //while(listaJednostek.size()>=1)
         for (Jednostka jednostka:listaJednostek) {
-            jednostka.nowaLokalizacja=jednostka.pobierzNowaLokalizacje(mapa.tablicaPol,mapa.dlugosc,mapa.szerokosc);
-            if(licznikTur==0){
-                odlegloscPoczatkowa = jednostka.obliczOdlegloscPoczatkowa(jednostka);
+            if(licznikTur==0) {
+                jednostka.tablica[0]=0;
+                jednostka.tablica[1]=0;
+                do {
+                    jednostka.Lokalizacja = jednostka.pobierzNowaLokalizacje(mapa.tablicaPol, mapa.dlugosc, mapa.szerokosc);
+                    odleglosc = jednostka.obliczOdleglosc(jednostka);
+                    System.out.println("Odleglosc "+jednostka.imie+": ");
+                    System.out.format("%.2f%n",odleglosc);
+                    if(jednostka.czyDobraOdlegosc(odleglosc)==false)
+                        System.out.println("Za daleko. Pobieranie nowej lokalizacji...");
+                } while (!jednostka.czyDobraOdlegosc(odleglosc));
             }
-            licznikTur++;
         }
+        licznikTur++;
     }
 
-    public Symulacja(Mapa mapa)
+    private Symulacja(Mapa mapa)
     {
         this.mapa=mapa;
     }
@@ -55,6 +58,8 @@ public class Symulacja {
     {
         Mapa mapa = new Mapa();
         Symulacja symulacja = new Symulacja(mapa);
+        mapa.losujkofiguracje(mapa.tablica);
+        mapa.rozmiescpola(mapa.tablicaPol);
         symulacja.startSymulacji(symulacja.listaJednostek);
     }
 }
