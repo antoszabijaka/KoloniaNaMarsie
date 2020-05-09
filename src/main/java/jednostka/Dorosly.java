@@ -8,4 +8,9 @@ public class Dorosly extends Jednostka {
     {
         super(iloscZdrowia,poziomWytrzymalosci,poziomGlodu,lokalizacja,imie);
     }
+
+    @Override
+    public int zmniejszWytrzymalosc() {
+        return 0;
+    }
 }

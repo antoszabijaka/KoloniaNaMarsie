@@ -30,10 +30,6 @@ public abstract class Jednostka implements IJednostka {
     {
         return poziomWytrzymalosci+10;
     }
-    public int zmniejszWytrzymalosc()
-    {
-        return poziomWytrzymalosci-10;
-    }
     public int zwiekszGlod()
     {
         return poziomGlodu+10;
@@ -41,6 +37,12 @@ public abstract class Jednostka implements IJednostka {
     public int zmniejszGlod()
     {
         return poziomGlodu-10;
+    }
+    public int zmniejszWytrzymalosc(double odleglosc)
+    {
+        odleglosc=odleglosc+0.5;
+        int a = (int)odleglosc*2;
+        return poziomWytrzymalosci - a;
     }
     public double obliczOdleglosc(Jednostka jednostka)
     {

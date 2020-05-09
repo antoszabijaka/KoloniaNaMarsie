@@ -33,3 +33,65 @@ moglo byc w mainie
                         {
                             jednostka.nowaLokalizacja=jednostka.pobierzNowaLokalizacje(mapa.tablicaPol,mapa.dlugosc,mapa.szerokosc);
                             odlegloscPoczatkowa=jednostka.obliczOdlegloscPoczatkowa(jednostka);
+
+    for (int i=0;i<listaJednostek.size();i++)
+         {
+                 listaJednostek.get(i).tablica[0] = listaJednostek.get(i).tablica[2];
+                 listaJednostek.get(i).tablica[1] = listaJednostek.get(i).tablica[3];
+                 System.out.println(listaJednostek.get(i).imie + ":");
+                 System.out.println("Obecna lokalizacja: Pole[" + jednostka.tablica[0] + "][" + jednostka.tablica[1] + "]");
+                 if(jednostka.Lokalizacja.getClass()==Pozywienie.class)
+                     System.out.println("Rodzaj pola: Pozywienie");
+                 if(jednostka.Lokalizacja.getClass()==Schronienie.class)
+                     System.out.println("Rodzaj pola: Schronienie");
+                 if(jednostka.Lokalizacja.getClass()==Skaly.class)
+                     System.out.println("Rodzaj pola: Skaly");
+                 if(jednostka.Lokalizacja.getClass()==Woda.class)
+                     System.out.println("Rodzaj pola: Woda");
+                 do {
+                     jednostka.Lokalizacja = jednostka.pobierzNowaLokalizacje(mapa.tablicaPol, mapa.dlugosc, mapa.szerokosc);
+                     System.out.println("Nowa lokalizacja: Pole[" + jednostka.tablica[2] + "][" + jednostka.tablica[3] + "]");
+                     if(jednostka.Lokalizacja.getClass()==Pozywienie.class)
+                         System.out.println("Rodzaj pola: Pozywienie");
+                     if(jednostka.Lokalizacja.getClass()==Schronienie.class)
+                         System.out.println("Rodzaj pola: Schronienie");
+                     if(jednostka.Lokalizacja.getClass()==Skaly.class)
+                         System.out.println("Rodzaj pola: Skaly");
+                     if(jednostka.Lokalizacja.getClass()==Woda.class)
+                         System.out.println("Rodzaj pola: Woda");
+                     odleglosc = jednostka.obliczOdleglosc(jednostka);
+                     System.out.println("Odleglosc: " + odleglosc);
+                     if (!jednostka.czyDobraOdlegosc(odleglosc))
+                         System.out.println("Za daleko. Pobieranie nowej lokalizacji...");
+                 } while (!jednostka.czyDobraOdlegosc(odleglosc));
+                 jednostka.poziomWytrzymalosci=jednostka.zmniejszWytrzymalosc(odleglosc);
+                 if(jednostka.Lokalizacja.getClass()==Pozywienie.class)
+                 {
+                     if(jednostka.poziomGlodu>=10)
+                     jednostka.poziomGlodu=jednostka.zmniejszGlod();
+                 }
+                 else if(jednostka.Lokalizacja.getClass()==Schronienie.class)
+                 {
+                     if(jednostka.poziomWytrzymalosci<=90)
+                     jednostka.poziomWytrzymalosci=jednostka.zwiekszWytrzymalosc();
+                 }
+                 else if(jednostka.Lokalizacja.getClass()==Skaly.class)
+                 {
+                     if(jednostka.poziomZdrowia>=20)
+                     jednostka.poziomZdrowia=jednostka.zmniejszZdrowie();
+                     if(jednostka.poziomGlodu<=80)
+                     jednostka.poziomGlodu=jednostka.zwiekszGlod();
+                 }
+                 else if(jednostka.Lokalizacja.getClass()==Woda.class)
+                 {
+                     if(jednostka.poziomZdrowia<=90)
+                     jednostka.poziomZdrowia=jednostka.zwiekszZdrowie();
+                 }
+                 System.out.println("Poziom wytrzymalosci:"+jednostka.poziomWytrzymalosci);
+                 System.out.println("Poziom zdrowia:"+jednostka.poziomZdrowia);
+                 System.out.println("Poziom glodu:"+jednostka.poziomGlodu);
+                 if(jednostka.poziomWytrzymalosci<=0||jednostka.poziomZdrowia<=0||jednostka.poziomGlodu>=100)
+                     {
+                         System.out.println("Jednostka "+jednostka.imie+ " umiera");
+                     }
+                 }
