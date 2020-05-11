@@ -5,8 +5,8 @@ import pole.*;
 import java.util.Random;
 
 public class Mapa implements IMapa {
-    public int dlugosc=10;
-    public int szerokosc=10;
+    public int dlugosc=5;
+    public int szerokosc=5;
 
     public Pole[][] tablicaPol = new Pole[dlugosc][szerokosc];
     public int[][]tablica = new int[dlugosc][szerokosc];

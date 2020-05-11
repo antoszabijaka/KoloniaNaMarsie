@@ -69,6 +69,17 @@ public class Symulacja {
                         System.out.println("Za daleko. Pobieranie nowej lokalizacji...");
                 } while (!listaJednostek.get(i).czyDobraOdlegosc(odleglosc));
                 listaJednostek.get(i).poziomWytrzymalosci=listaJednostek.get(i).zmniejszWytrzymalosc(odleglosc);
+                if(listaJednostek.get(i).getClass()==Dziecko.class && licznikTur>=2 && listaJednostek.get(i).poziomGlodu>=10)
+                    if(i==2 && (listaJednostek.get(i).lokalizacja==listaJednostek.get(i-1).lokalizacja||listaJednostek.get(i).lokalizacja==listaJednostek.get(i-2).lokalizacja))
+                    {
+                        System.out.println("Karmienie dziecka");
+                        listaJednostek.get(i).zmniejszGlod();
+                    }
+                    else if(i==1 && listaJednostek.get(i).lokalizacja==listaJednostek.get(i-1).lokalizacja)
+                    {
+                        System.out.println("Karmienie dziecka");
+                        listaJednostek.get(i).zmniejszGlod();
+                    }
                 if(listaJednostek.get(i).lokalizacja.getClass()==Pozywienie.class)
                 {
                     if(listaJednostek.get(i).poziomGlodu>=10)
